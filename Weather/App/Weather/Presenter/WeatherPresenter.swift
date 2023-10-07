@@ -54,6 +54,10 @@ extension WeatherPresenter: FindWeatherPresenterInterface {
     func searchCityWheater(city: String) {
         interactor.search(city: city)
     }
+    
+    func chooseSearchCity(_ row: Int) {
+        interactor.chooseSearchCity(row)
+    }
 }
 
 extension WeatherPresenter: WeatherInteractorDelegate {
