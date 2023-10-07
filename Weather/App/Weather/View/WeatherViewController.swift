@@ -54,7 +54,6 @@ final class WeatherViewController: ViewController {
         tableView.delegate = self
         
         presenter.viewDidLoad()
-        
     }
     
     //MARK: Setup
@@ -86,7 +85,6 @@ final class WeatherViewController: ViewController {
         navigationItem.hidesSearchBarWhenScrolling = false
         
         searchController.searchBar.sizeToFit()
-//        self.navigationController?.navigationBar.isTranslucent = true
         
         searchController.searchBar.placeholder = "Поиск городов"
         searchController.searchBar.delegate = self

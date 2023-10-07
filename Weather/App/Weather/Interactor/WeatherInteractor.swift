@@ -24,6 +24,7 @@ final class WeatherInteractor {
         case loadData
         //когда мы загружаем при поиске
         case search
+        //Когда выбрали один из найденых городов
         case chooseSearchedCity
     }
 }
