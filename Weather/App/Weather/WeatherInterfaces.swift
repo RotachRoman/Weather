@@ -33,6 +33,7 @@ protocol FindWeatherPresenterInterface: AnyObject {
     func searchCountTableObjects() -> Int
     func searchTableCellObj(row: Int, section: Int) -> CellObject
     func searchCityWheater(city: String)
+    func chooseSearchCity(_ index: Int)
 }
 
 //MARK: - Interactor
@@ -44,6 +45,7 @@ protocol WeatherInteractorInterface: AnyObject {
 protocol WeatherInteractorSearchInterface: AnyObject {
     var searchObj: [CellObject] { get set }
     func search(city: String)
+    func chooseSearchCity(_ index: Int) 
 }
 
 protocol WeatherInteractorDelegate: AnyObject {

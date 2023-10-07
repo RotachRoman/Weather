@@ -17,7 +17,6 @@ final class WeatherWireframe: BaseWireframe {
 }
 
 // MARK: - Extensions -
-
 extension WeatherWireframe: WeatherWireframeInterface {
     func startModule() {
         let weatherViewController = WeatherViewController()

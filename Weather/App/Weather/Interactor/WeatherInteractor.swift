@@ -20,8 +20,12 @@ final class WeatherInteractor {
     var searchWeatherResponse: WeatherInfoResponse?
     
     enum StateFetch {
+        //когда мы загружаем при первом запуске выполняется
         case loadData
+        //когда мы загружаем при поиске
         case search
+        //Когда выбрали один из найденых городов
+        case chooseSearchedCity
     }
 }
 
@@ -41,6 +45,22 @@ extension WeatherInteractor: WeatherInteractorSearchInterface {
         stateLoad = .search
         fetchWeatherInfo(city: city)
     }
+    
+    func chooseSearchCity(_ index: Int) {
+        //Нужно передавать для дальнейшей реализации вытягивания городов с запроса
+        guard let searchWeatherResponse = searchWeatherResponse else {
+            return
+        }
+        UserDefaultsManager.choosenCity = searchWeatherResponse.name
+        
+        let lat = String(searchWeatherResponse.coord.lat)
+        let lon = String(searchWeatherResponse.coord.lon)
+        
+        fetchDailyWeather(
+            city: searchWeatherResponse.name,
+            lat: lat,
+            lon: lon)
+    }
 }
 
 //MARK: - Network -
@@ -48,10 +68,9 @@ extension WeatherInteractor {
     func fetchWeatherInfo(city: String) {
         WeatherService().fetchWeather(city: city) {[weak self] response in
             if let response = response {
+                
                 switch self?.stateLoad {
-                    //когда мы загружаем при первом запуске выполняется
                 case .loadData: self?.successLoadfetchWeatherInfo(response)
-                    //когда мы загружаем при поиске
                 case .search: self?.successSearch(response)
                 default: break
                 }
@@ -65,16 +84,7 @@ extension WeatherInteractor {
     func fetchDailyWeather(city: String, lat: String, lon: String) {
         WeatherService().fetchDalyWeather(city: city, lon: lon, lat: lat) {[weak self] response in
             if let response = response {
-                
-                guard let infoWeatherResponse = self?.infoWeatherResponse else { return }
-                
-                self?.objects = []
-                
-                DispatchQueue.main.async {
-                    self?.interatorDelegate?.createObject(
-                        infoResponse: infoWeatherResponse,
-                        dailyResponse: response)
-                }
+                self?.sucessFetchDaily(response)
                 
             } else {
                 self?.interatorDelegate?.showError("Ошибка загрузки")
@@ -97,6 +107,18 @@ extension WeatherInteractor {
         searchWeatherResponse = response
         DispatchQueue.main.async {[weak self] in
             self?.interatorDelegate?.successSearch(infoResponse: response)
+        }
+    }
+    
+    private func sucessFetchDaily(_ response: DailyWeatherResponse){
+        objects = []
+        guard let infoResponse = stateLoad == .search ? searchWeatherResponse : infoWeatherResponse else {
+            return
+        }
+        DispatchQueue.main.async {[weak self] in
+            self?.interatorDelegate?.createObject(
+                infoResponse: infoResponse,
+                dailyResponse: response)
         }
     }
 }

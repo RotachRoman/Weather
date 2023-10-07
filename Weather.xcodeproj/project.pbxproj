@@ -39,6 +39,7 @@
 		CBAF9CF12AD0525800FC0990 /* UITableView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF9CF02AD0525800FC0990 /* UITableView + Extension.swift */; };
 		CBAF9CF32AD0591D00FC0990 /* Formatter + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF9CF22AD0591D00FC0990 /* Formatter + Extension.swift */; };
 		CBAF9CFF2AD0618B00FC0990 /* SetupAppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF9CFE2AD0618B00FC0990 /* SetupAppRouter.swift */; };
+		CBAF9D012AD1693B00FC0990 /* NSObject + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBAF9D002AD1693B00FC0990 /* NSObject + Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		CBAF9CF02AD0525800FC0990 /* UITableView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView + Extension.swift"; sourceTree = "<group>"; };
 		CBAF9CF22AD0591D00FC0990 /* Formatter + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Formatter + Extension.swift"; sourceTree = "<group>"; };
 		CBAF9CFE2AD0618B00FC0990 /* SetupAppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupAppRouter.swift; sourceTree = "<group>"; };
+		CBAF9D002AD1693B00FC0990 /* NSObject + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject + Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +292,7 @@
 				CBAF9CEA2AD04DB100FC0990 /* Date + Extension.swift */,
 				CBAF9CF02AD0525800FC0990 /* UITableView + Extension.swift */,
 				CBAF9CF22AD0591D00FC0990 /* Formatter + Extension.swift */,
+				CBAF9D002AD1693B00FC0990 /* NSObject + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -453,6 +456,7 @@
 				CB3E38F62ACEC4510033977E /* WeatherInteractor.swift in Sources */,
 				CBAF9CE12AD02CE800FC0990 /* Double + Extension.swift in Sources */,
 				CB3E39102ACEDEF00033977E /* WeatherListTVC.swift in Sources */,
+				CBAF9D012AD1693B00FC0990 /* NSObject + Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
